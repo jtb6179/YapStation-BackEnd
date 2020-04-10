@@ -3,18 +3,18 @@ class CommentsController < ApplicationController
 
     def index
         @comments = Comment.all 
-        render :json @comments
+        render json: @comments
     end
     
     def create
         @comment =  @user.comment.create(comment_params)
-        render :json @comment 
+        render json: @comment 
     end
 
     def update
         @comment = Comment.find(params[:id])
         @comment.update
-        render :json @comment
+        render json: @comment
     end
 
 private
