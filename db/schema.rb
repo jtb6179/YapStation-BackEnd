@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_182549) do
+ActiveRecord::Schema.define(version: 2020_04_13_150617) do
 
   create_table "babble_likes", force: :cascade do |t|
     t.integer "a_like"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 2020_03_30_182549) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "friendships", force: :cascade do |t|
+    t.integer "user_id_id", null: false
+    t.integer "friend_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id_id"], name: "index_friendships_on_user_id_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
@@ -47,4 +55,5 @@ ActiveRecord::Schema.define(version: 2020_03_30_182549) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "friendships", "user_ids"
 end
