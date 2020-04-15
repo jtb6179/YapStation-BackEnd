@@ -3,4 +3,6 @@ class UserSerializer < ActiveModel::Serializer
   
   has_many :babbles
   has_many :comments
+  has_many :friends
+  has_many :inverse_friends
 end
